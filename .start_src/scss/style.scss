@@ -1,0 +1,41 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "mixins";
+
+
+/* Tipografia Futura
+-------------------------------------------------- */
+@at-root {
+  // Import the fonts
+  @font-face{
+    font-family:'Grotesque-Bold';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot'), '#{$icon-font-path}#{$body-font-name-bold}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff2'), '#{$icon-font-path}#{$body-font-name-bold}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff'), '#{$icon-font-path}#{$body-font-name-bold}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.ttf'), '#{$icon-font-path}#{$body-font-name-bold}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}'), '#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}')) format('svg');
+  }
+    @font-face{
+    font-family:'Grotesque-Medium';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff2'), '#{$icon-font-path}#{$body-font-name-medium}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff'), '#{$icon-font-path}#{$body-font-name-medium}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.ttf'), '#{$icon-font-path}#{$body-font-name-medium}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}'), '#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}')) format('svg');
+  }
+    @font-face{
+    font-family:'Grotesque-Light';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff2'), '#{$icon-font-path}#{$body-font-name-light}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff'), '#{$icon-font-path}#{$body-font-name-light}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.ttf'), '#{$icon-font-path}#{$body-font-name-light}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}'), '#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}')) format('svg');
+  }
+}
+
+/* Global styles
+-------------------------------------------------- */
+
+.bg-blue{
+	background:$color-brand-blue;
+}

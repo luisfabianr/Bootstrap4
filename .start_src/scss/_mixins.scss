@@ -1,0 +1,202 @@
+// =============================================================================
+// Variables Nuevas
+// =============================================================================
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+$font-family-serif:			  "PT Serif", serif;	
+$bootstrap-sass-asset-helper: false;
+$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "fonts/Grotesque/");
+
+//** File name for all font files.
+$body-font-name-medium:     "Grotesque-Medium";
+$body-font-svg-id-medium:   "Grotesque-Medium";
+$body-font-name-light:       "Grotesque-Light";
+$body-font-svg-id-light:     "Grotesque-Light";
+$body-font-name-bold:      	 "Grotesque-Bold";
+$body-font-svg-id-bold:   	 "Grotesque-Bold";
+
+$font-family-brand-bold:	 "Grotesque-Bold";
+$font-family-brand-light:	 "Grotesque-Light";
+$font-family-brand-medium: "Grotesque-Medium";
+
+$color-brand-blue:          #005EB8;
+$color-brand-blue-light:    #41B6E6;
+$color-brand-blue-dark:     #003865;
+$color-brand-yellow:        #FFC72C;
+$color-brand-grey:          #D8D1CA;
+$color-brand-fucsia:        #E10F54;
+$color-brand-morado:        #8A1B61;
+
+
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// =============================================================================
+// Opacity
+// =============================================================================
+// Opacity should be on a 100 point scale (0-100 instead of 0.0-1.0)
+// This should be used to supplement a normal border definition as it
+// only deals with the 'border-color' property.
+@mixin border-opacity($color, $opacity) {
+	$opacity: $opacity / 100;
+
+	// Unsupporting browsers get this
+	border-color: $color;
+
+	// Browsers that support RGBA will get this instead
+	border-color: rgba($color, $opacity);
+
+	// Prevent the element's background from reaching the edge of the border
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding;
+	background-clip: padding-box;
+}
+
+// =============================================================================
+// color placeholder
+// =============================================================================
+
+@mixin placeholder-color($color) {
+  	&::-webkit-input-placeholder { /* WebKit browsers */
+  		font-family:$font-family-brand-light;
+      	color:$color;
+  	}
+  	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      	color:$color;
+      	font-family:$font-family-brand-light;
+  	}
+  	&::-moz-placeholder { /* Mozilla Firefox 19+ */
+      	color:$color;
+      	font-family:$font-family-brand-light;
+  	}
+  	&:-ms-input-placeholder { /* Internet Explorer 10+ */
+      	color:$color;
+      	font-family:$font-family-brand-light;
+  	}
+}
+
+// =============================================================================
+// Even odd
+// =============================================================================
+
+@mixin even(){
+  &:nth-child(even) {
+    @content
+  }
+}
+
+@mixin odd(){
+  &:nth-child(odd) {
+    @content
+  }
+}
+
+// =============================================================================
+// transition
+// =============================================================================
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin transition-property($transition-property...) {
+  -webkit-transition-property: $transition-property;
+          transition-property: $transition-property;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration...) {
+  -webkit-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+@mixin transition-timing-function($timing-function) {
+  -webkit-transition-timing-function: $timing-function;
+          transition-timing-function: $timing-function;
+}
+@mixin transition-transform($transition...) {
+  -webkit-transition: -webkit-transform $transition;
+     -moz-transition: -moz-transform $transition;
+       -o-transition: -o-transform $transition;
+          transition: transform $transition;
+}
+
+// Backface visibility
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden`
+
+@mixin backface-visibility($visibility) {
+  -webkit-backface-visibility: $visibility;
+     -moz-backface-visibility: $visibility;
+          backface-visibility: $visibility;
+}
+// Animations
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+       -o-animation: $animation;
+          animation: $animation;
+}
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+          transform: translate3d($x, $y, $z);
+}
+
+@mixin transition-late($time, $type, $delay){
+    -webkit-transition: all $time $type $delay;
+    -moz-transition: all $time $type $delay;
+    -o-transition: all $time $type $delay;
+    -ms-transition: all $time $type $delay;
+    transition: all $time $type $delay;
+}
+.animated {
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+

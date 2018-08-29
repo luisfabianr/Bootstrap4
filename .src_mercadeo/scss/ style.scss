@@ -1,0 +1,344 @@
+@import "child_theme_variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap variables here
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "mixins";
+@import "responsive";
+
+
+html,
+body {
+  height: 100%;
+}
+
+/* Tipografia Futura
+-------------------------------------------------- */
+@at-root {
+  // Import the fonts
+  @font-face{
+    font-family:'Grotesque-Bold';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot'), '#{$icon-font-path}#{$body-font-name-bold}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff2'), '#{$icon-font-path}#{$body-font-name-bold}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff'), '#{$icon-font-path}#{$body-font-name-bold}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.ttf'), '#{$icon-font-path}#{$body-font-name-bold}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}'), '#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}')) format('svg');
+  }
+
+  @font-face{
+    font-family:'Grotesque-Medium';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.eot'), '#{$icon-font-path}#{$body-font-name-medium}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-medium}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff2'), '#{$icon-font-path}#{$body-font-name-medium}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff'), '#{$icon-font-path}#{$body-font-name-medium}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.ttf'), '#{$icon-font-path}#{$body-font-name-medium}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}'), '#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}')) format('svg');
+  }
+
+  @font-face{
+    font-family:'Grotesque-Light';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.eot'), '#{$icon-font-path}#{$body-font-name-light}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-light}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff2'), '#{$icon-font-path}#{$body-font-name-light}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff'), '#{$icon-font-path}#{$body-font-name-light}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.ttf'), '#{$icon-font-path}#{$body-font-name-light}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}'), '#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}')) format('svg');
+  }
+}
+
+/* Common classes
+-------------------------------------------------- */
+body {
+  	background-color: #f5f5f5;
+}
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+.bg-purple {
+    background-color: var(--purple);
+}
+main{
+    background:$bg-light;
+}
+.bg-blue{
+    background:$primary;
+}
+/* Buttons
+-------------------------------------------------- */
+
+
+/* Forms
+-------------------------------------------------- */
+.login{
+    background:$primary;
+    .form-signin {
+      	//width: 100%;
+      	//max-width: 330px;
+      	padding: 15px;
+     	margin: auto;
+      	.checkbox{
+      		font-weight: 400;
+      	}
+      	.form-control{
+    	  	position: relative;
+    	  	box-sizing: border-box;
+    	  	height: auto;
+    	  	padding: 10px;
+    	  	font-size: 1rem;
+      		:focus{
+      			z-index: 2;	
+      		}
+      	}
+      	input[type="password"] {
+      		margin-bottom: 10px;
+      		
+      	}
+    }
+    .text-white{
+        font-family:$body-font-name-light;
+    }
+    .btn-login{
+        font-family:$body-font-name-medium;
+        text-transform:uppercase;
+        letter-spacing:1px;
+        font-size:1.1rem;
+        padding-top: 12px;
+    }
+}
+
+/*  Sidebar Agenda
+-------------------------------------------------- */
+
+.col-sidebar{
+    overflow-x:scroll;
+    @extend .box-shadow;
+    .agenda-tittle{
+        padding:0.5rem 1.1rem;
+        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.05);
+        h3{
+            padding:5px 0 0 30px;
+            font-family:$body-font-name-medium;
+            font-size:0.9rem;
+            text-transform:uppercase;
+            color:$brand;
+            vertical-align:middle;
+            display:inline-block;
+            position:relative;
+            &:before{
+                content:'';
+                @include size(28px);
+                background:url('../assets/icon-calendar.svg') no-repeat;
+                position:absolute;
+                top:-3px;
+                left:0;
+            }
+        }
+    }
+    .date-today{
+        color:$brand;
+        .date{
+            font-family:$body-font-name-light;
+        }
+        .hour{
+            font-family:$body-font-name-medium;
+        }
+    }
+    .agenda{
+        padding:0 15px;
+        .agenda-body{
+            .title-mes{
+                font-family:$body-font-name-medium;
+                color:$gray-800;
+                text-align:left;
+                font-size:1.3rem;
+                margin-bottom:0;
+                margin-top:2rem;
+                padding-left:2.3rem;
+            }
+            .timeline {
+                list-style: none;
+                padding: 0px;
+                position: relative;
+                &::before{
+                    top: 0;
+                    bottom: 0;
+                    position: absolute;
+                    content: " ";
+                    width: 1px;
+                    background-color: #D5D5DB;
+                    left: 9%;
+                    margin-left: -1.5px;
+                }
+                >li{
+                    margin-bottom: 20px;
+                    position: relative;
+                    &::before{
+                        content: " ";
+                        display: table;
+                    }
+                    &::after{
+                        content: " ";
+                        display: table;
+                        clear: both;
+                    }
+                    .timeline-panel{
+                        float: right;
+                        border-radius: 2px;
+                        padding: 20px;
+                        position: relative;
+                        width: calc(100% - 70px);
+                        .timeline-title {
+                            margin-top: 0;
+                            color: inherit;
+                        }
+                        .timeline-body > p,
+                        .timeline-body > ul {
+                            margin-bottom: 0;
+                        }
+                        .timeline-body > p + p {
+                            margin-top: 5px;
+                        }
+                    }
+                    .timeline-badge{
+                        color: #fff;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 47px;
+                        font-size: 1.2rem;
+                        text-align: center;
+                        position: absolute;
+                        background-color: $gray-500;
+                        z-index: 100;
+                        border-radius:50%;
+                        left: 15px;
+                        margin-left: 0;
+                        top: 16px;
+                        font-family:$body-font-name-light;
+                        &.active {
+                            background-color:$brand;
+                            font-family:$body-font-name-bold;
+                            line-height:55px;
+                            width: 50px;
+                            height:50px;
+                            font-size: 1.4rem;
+                        }
+                        &.success {
+                            background-color: #3f903f !important;
+                        }
+                        &.warning {
+                            background-color: #f0ad4e !important;
+                        }
+                        &.danger {
+                            background-color: #d9534f !important;
+                        }
+                        &.info {
+                            background-color: #5bc0de !important;
+                        }
+                    }
+                    .timeline-panel{
+                        .timeline-heading{
+                            .timeline-title-day{
+                                font-family:$body-font-name-light;
+                                font-size:1.2rem;
+                                color:$gray-600;
+                            }
+                        }
+                        .timeline-body{
+                            h3{
+                                font-family:$body-font-name-medium;
+                                font-size:1.2rem;                      
+                            }
+                            p{
+                                font-size:0.9rem;  
+                                line-height:1.2;
+                                color:$gray-600;
+                            }
+                            .more{
+                                color:$brand;
+                                position:relative;
+                                padding-left:25px;
+                                margin-top:5px;
+                                display:inline-block;
+                                &:before{
+                                    content:'';
+                                    @include size(20px);
+                                    background:url('../assets/icon-more.svg');
+                                    position:absolute;
+                                    top:-2px;
+                                    left:0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    background:white;
+}
+.sidebar-cards{
+    top: 4rem;
+    .sidebar-card-tittle{
+        padding:5px 1.5rem;
+        h3{
+            padding:5px 0 0 40px;
+            font-family:$body-font-name-medium;
+            font-size:0.9rem;
+            text-transform:uppercase;
+            color:$brand;
+            vertical-align:middle;
+            display:inline-block;
+            position:relative;
+            &:before{
+                content:'';
+                @include size(35px, 28px);
+                background:url('../assets/icon-megaphone.svg') no-repeat;
+                position:absolute;
+                top:-3px;
+                left:0;
+            }
+        }
+    }
+    .card-columns{
+        padding:0 25px;
+        .card{
+            padding:1rem;
+            margin:1rem;
+            > img{
+                width:100%;
+            }
+            .event-category{
+                padding-bottom:0.5rem;
+                a{
+                    font-family:$body-font-name-light;
+                    font-size:1.2rem;
+                    color: $gray-800;
+                }
+            }
+            .card-body{
+                .date-card{
+                    font-family:$body-font-name-light;
+                    color: $gray-500;
+                    font-size:1rem;
+                }
+                .card-title{
+                    font-family:$body-font-name-medium;
+                }
+                .card-text{
+                    font-size:0.9rem;  
+                    line-height:1.2;
+                    color:$gray-600;
+                }
+            }
+        }
+    }
+}
+
+/*  Repositorio Novedades
+-------------------------------------------------- */
+
+
+
+    
+
+

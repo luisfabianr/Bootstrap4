@@ -1,0 +1,149 @@
+/* Buscador home
+-------------------------------------------------- */
+
+#buscador-malla{
+	.row{
+		>h2{
+			font-family:$font-family-brand-light;
+			font-size: 1rem;
+			color:white;
+			letter-spacing:4px;
+			text-transform:uppercase;
+			padding-left:15px;
+		}
+		div[class*="col-md"]{
+			border-style: solid;
+			border-width: 1px;
+			@include border-opacity(white, 50);
+			border-left:none;
+			padding: 1rem 0.5rem;
+			&:first-child{
+				border-left-style: solid;
+				border-left-width: 1px;
+				@include border-opacity(white, 50);
+			}
+			&:last-child{
+				border:none;
+			}
+		}
+		.ciclo{
+			margin-top:5px;
+			font-family:$font-family-brand-light;
+			text-transform:uppercase;
+			color: white;
+			font-size:0.9rem;
+			letter-spacing:2px;
+			.col-auto{
+				margin-left:10px;
+			}
+			.border{
+				font-family:$font-family-brand;
+				color:white;
+				padding:6px 9px 2px;
+				font-size:1.1rem;
+				border-width:1px !important;
+				letter-spacing:0;
+				@include transition(all .2s ease-in-out );
+				&:hover{
+					background:white;
+					color:$industrial;
+				}
+			}
+			a:hover {
+				text-decoration:none;
+
+			}
+		}
+		.search{
+			padding-left:3rem !important;
+			position:relative;
+			.input-group-addon{
+				background:url('../assets/icon-search.svg') no-repeat;
+				@include size(50px);
+				position:absolute;
+				left: -25px;
+    			top: 5px;
+			}
+		}
+	}
+}
+/* Buscador pages
+-------------------------------------------------- */
+.row.search-programas{
+	div[class*="col-md"]{
+		border-right-style: solid;
+		border-right-width: 1px;
+		@include border-opacity(black, 30);
+		padding: 0.2rem 0.2rem;
+		&:last-child{
+			border:none;
+		}		
+	}
+	.ciclo{
+		margin-top:5px;
+		font-family:$font-family-brand;
+		text-transform:uppercase;
+		color: $brand-dark;
+		font-size:0.9rem;
+		letter-spacing:2px;
+		.col-auto{
+			margin-left:8px;
+			&:last-child{
+				margin-right:8px;
+			}
+		}
+		.border{
+			font-family:$font-family-brand;
+			color:$semi-transparent-dark;
+			padding:6px 9px 2px;
+			font-size:1.1rem;
+			border-width:1px !important;
+			border-color:$semi-transparent-dark !important;
+			letter-spacing:0;
+			@include transition(all .2s ease-in-out );
+			&:hover{
+				background:$industrial;
+				color:white;
+				border-color:$industrial !important;
+			}
+			&.active{
+				background:$industrial;
+				color:white;
+				border-color:$industrial !important;
+			}
+		}
+		a:hover {
+			text-decoration:none;
+		}
+	}
+	.search{
+		padding-left:2rem !important;
+		position:relative;
+		.input-group-addon{
+			background:url('../assets/icon-search-dark.svg') no-repeat;
+			@include size(50px);
+			position:absolute;
+			left: -25px;
+			top: 5px;
+		}
+	}
+}
+.identificador{
+	font-family:$font-family-brand-bold;
+	color:$industrial;
+}
+.dropdown-menu{
+	//@include border-radius(4px);
+	font-family:$font-family-brand-light;
+	font-size:1.1rem;
+	.dropdown-item{
+		&.active,
+		&:active {
+		    color: $dropdown-link-active-color;
+		    text-decoration: none;
+		    background:$industrial;
+		    letter-spacing:1px;
+			}
+	}
+}
+

@@ -1,0 +1,852 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "mixins";
+@import "nav";
+@import "search";
+@import "responsive";
+
+
+/* Tipografia Futura
+-------------------------------------------------- */
+@at-root {
+  // Import the fonts
+  @font-face{
+    font-family:'FuturaLT Bold';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot'), '#{$icon-font-path}#{$body-font-name-bold}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff2'), '#{$icon-font-path}#{$body-font-name-bold}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff'), '#{$icon-font-path}#{$body-font-name-bold}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.ttf'), '#{$icon-font-path}#{$body-font-name-bold}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}'), '#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}')) format('svg');
+  }
+    @font-face{
+    font-family:'futuraregular';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.woff2'), '#{$icon-font-path}#{$body-font-name-regular}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.woff'), '#{$icon-font-path}#{$body-font-name-regular}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.ttf'), '#{$icon-font-path}#{$body-font-name-regular}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.svg##{$body-font-svg-id-regular}'), '#{$icon-font-path}#{$body-font-name-regular}.svg##{$body-font-svg-id-regular}')) format('svg');
+  }
+    @font-face{
+    font-family:'futura_lt_btlight';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff2'), '#{$icon-font-path}#{$body-font-name-light}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff'), '#{$icon-font-path}#{$body-font-name-light}.woff')) format('woff');
+  }
+}
+
+/* Common classes
+-------------------------------------------------- */
+.zoom-img {
+  	//@include transition(all 0.3s ease-in-out);
+  	@extend .zoom-img-hover;
+
+}
+.zoom-img-hover {
+  transform: scale(1.05);
+  transition-duration: 0.5s;
+}
+
+.rollover{
+	position:relative;	
+	//@include transition(all 0.3s ease-in-out);		
+	&:hover{
+		&::before{
+			content:'';
+			@include size(100%);
+			position:absolute;
+			background-color:$brand-dark;
+			opacity:0.2;
+			left:0;
+			top:0;
+			z-index:1;
+			@include transition(all 0.3s ease-in-out);	
+		}
+		.card-img-top{
+			@extend .zoom-img;
+		}
+		.card-title a{
+			@include transition(all 0.3s ease-in-out);
+			text-decoration:none;
+			opacity:1;
+		}
+
+	}
+}
+.full-bg {
+    background: $gray-100;
+    position: relative;
+    &::before,
+    &::after {
+        content: "";
+        background: $gray-100;
+        display: block;
+        //width: $bg-demasia-width;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    &::after {
+        left: auto;
+        right: 100%;
+    }
+}
+.mask-img{
+	position:relative;
+	&:before{
+		content:'';
+		@include size(100%);
+		position:absolute;
+		background-color:$brand-dark;
+		opacity:0.1;
+		left:0;
+		top:0;
+		z-index:1;
+		
+	}
+}
+
+.nav-enlace-lines-transparent{
+	font-family:$font-family-brand;
+	color:white;
+	border-style: solid;
+	border-width: 1px;
+	font-style:normal !important;
+	@include border-opacity(white, 50);
+	margin-right:0.5rem;
+	border-radius:3px;
+	opacity:0.9;
+	text-transform:uppercase;
+	font-weight:300 !important;
+	@include transition(all .2s ease-in-out );
+	&.active{
+		font-family:$font-family-brand-light;
+		border-radius:2px;
+		border-style: solid;
+		border-width: 1px;
+		@include border-opacity(white, 80);
+		opacity:1;
+		color:white;
+	}
+	&:hover{
+		text-decoration:none;
+		border-radius:2px;
+		border-style: solid;
+		border-width: 2px;
+		@include border-opacity(white, 80);
+		opacity:1;
+		color:white;
+	}
+}
+
+.bt-line-l{
+	@extend .nav-enlace-lines-transparent;
+	font-size:0.7rem !important;
+	padding: 0.5rem 0.8rem 0.3rem;
+	letter-spacing:3px;
+}
+.bt-line-s{
+	@extend .nav-enlace-lines-transparent;
+	font-size:0.7rem !important;
+	padding: 0.4rem 0.4rem 0.2rem;
+	letter-spacing:1px;
+}
+.bt-line-xs{
+	@extend .nav-enlace-lines-transparent;
+	font-size:0.6rem !important;
+	padding: 0.3rem 0.3rem 0.1rem;
+	letter-spacing:1px;
+}
+.category-col{
+	a{
+		//margin-left:1.5rem;
+		@extend .bt-line-xs;
+		color:$brand-dark;
+		border-color:$brand-dark;
+	}
+	&.hover-cat a{
+		&::hover{
+			color:$industrial !important;
+			border-color:$brand-dark;
+		}
+	}
+}	
+.grid-items{	
+	@include odd(){
+		background: white;
+	}
+	@include even(){
+		background: $gray-100;
+	}
+	@extend .rollover;
+	&::before{
+		content:'';
+		background-color:$brand-dark;
+		opacity:0;
+		@include transition(all 0.3s ease-in-out);
+	}
+	.card {
+	  	background: transparent;
+	  	border: none;
+	  	position:relative;
+	  	@include border-radius(0);
+	  	overflow:hidden;
+	  	.card-img-top{
+	  		@include border-radius(0);
+	  		@include transition(all 0.3s ease-in-out);	
+	  	}
+		.card-body{
+			padding:4rem;
+			position:relative;
+			@include size(100%);
+			z-index:50;		
+			.card-title{
+				font-family:$font-family-brand-bold;
+				font-size:2.5rem;
+				color:$brand-dark;
+				line-height:1.1;
+				text-transform:uppercase;
+				word-break: break-all;
+				opacity:1;
+				@include transition(all 0.3s ease-in-out);	
+				a{
+					color:$brand-dark;
+					&:hover{
+						color:$brand-light;
+					}
+				}
+
+			}
+			.by{
+				color:$brand-dark;
+			}
+			.btn-group{
+				button{
+					@include border-radius(0);
+					font-family:$font-family-brand-light;
+					color:$brand-dark;
+					letter-spacing:1px;
+					@include transition(all 0.3s ease-in-out);	
+					&:hover{
+						color:white;
+					}
+				}
+			}
+			.list-student{
+				font-family:$font-family-brand-light;
+				color:$brand-dark;
+				.col{
+					border-color:$brand-dark !important;
+				}
+			}		
+		}
+		.card-img-top{
+			+ .card-body{
+				position:absolute;
+					&::before{
+						content:'';
+						position:absolute;
+						background-color:#222222;
+						opacity:0.2;
+						@include size(100%);
+						@include transition(all 0.3s ease-in-out);
+						z-index:2;
+						left:0;
+						top:0;
+						z-index:-1;
+					}
+				.category-col{
+					a{
+						//margin-left:1.5rem;
+						@extend .bt-line-xs;
+						color:white !important;
+						border-color:white !important;
+					}
+				}
+				.card-title{
+					a{
+						color:white;
+					}
+				}
+				.by{
+					color:white;
+				}
+				.btn-group{
+					button{
+						border-color:white;
+						color:white;
+					}
+				}
+				.list-student{
+					font-family:$font-family-brand-light;
+					color:white;
+					.col{
+						border-color:$gray-100 !important;
+					}
+				}	
+			}
+		}
+	}
+}
+.add-animation{
+    transform: translate3D(0px, 150px, 0px);
+    -webkit-transform: translate3D(0px, 150px, 0px); 
+    opacity: 0; 
+    //@include transition-late(0.3s, ease-out, 0.6s);
+    
+    &.animation-1{
+        @include transition-late(0.3s, ease-out, 0.15s);    
+    } 
+    &.animation-2{
+        @include transition-late(0.3s, ease-out, 0.30s);    
+    } 
+    &.animation-3{
+       @include transition-late(0.3s, ease-out, 0.45s);    
+    } 
+    &.animation-4{
+        @include transition-late(0.3s, ease-out, 3s);    
+    }      
+    &.animate{
+        transform: translate3D(0px, 0px, 0px);
+        -webkit-transform: translate3D(0px, 0px, 0px);
+        opacity: 1;
+
+        &.open{
+
+            transform: none;
+            transition: none;
+        }
+    }
+
+} 
+
+.color-industrial{
+	color:$industrial;
+}
+.card-img-top{
+	@include border-radius(0);
+}
+.body{
+	h2{
+		margin-top:2rem;
+		font-family:$font-family-brand-bold;
+		clear:left;
+		display:block;
+	}
+	h3{
+		font-family:$font-family-brand-bold;
+		clear:left;
+	}
+	blockquote{
+		margin:2rem 0;
+	}
+	.float-right{
+		position:relative;
+		margin-right:-300px;
+		padding:0 2rem;
+		img{
+			
+		}
+	}
+	.video-tab{
+		padding:1.1rem 1.1rem 7rem;
+		width:60%;
+		position:relative;
+		margin:4rem 0;
+		&::after{
+			content:'';
+			@include size(100%);
+			position:absolute;
+			background-image:url('../assets/imac-video.png');
+			background-repeat:no-repeat;
+			background-size:cover;
+			top:0;
+			left:0;
+			z-index:-1;
+			.embed-responsive-item{
+				z-index:50;
+			}
+		}
+	}
+}
+.breadcrumb{
+	background:none;
+	padding-left:3rem;
+	margin-top:1rem;
+	a{
+		@extend .bt-line-s;
+	}
+	.active{
+		font-family:$font-family-brand;
+		color:$gray-400;
+		font-size:0.8rem;
+		margin-top:3px;
+		letter-spacing:0.5px;
+		//text-transform:uppercase;
+	}
+	.breadcrumb-item + .breadcrumb-item::before{
+		content:'';
+		padding:0;
+	}
+}
+.by{
+	font-family:$font-family-serif;
+	font-size:0.8rem;
+	font-style:italic;
+}
+.no-break{
+	word-break:normal;
+}
+.d-asignatura{
+	line-height:1;
+	margin-bottom:1rem;
+}
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display:none;
+    z-index:49;
+}
+/// end classes
+
+/* Animaciones
+-------------------------------------------------- */
+// - Animations
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
+/* Standard syntax */
+@keyframes zoomin{
+	0%{
+		-webkit-transform:scale(1)
+	}
+	50%{
+		-webkit-transform:scale(1.5)
+	}
+	100%{
+		-webkit-transform:scale(1)
+	}
+}
+@-webkit-keyframes zoomin{
+	0%{
+		-webkit-transform:scale(1)
+	}
+	50%{
+		-webkit-transform:scale(1.5)
+	}
+	100%{
+		-webkit-transform:scale(1)
+	}
+}
+
+
+#sidebar-wrapper .bg-post-sidebar{
+	@include animation(zoomin 120s infinite linear);
+}
+
+
+.bounce-up{
+	opacity: 0;
+	@include transition(all 700ms ease-out);
+	@include translate3d(0px, 200px, 0px);
+	@include backface-visibility(hidden);
+}
+
+.bounce-up.in-view{
+	opacity: 1;
+	@include translate3d(0px, 0px, 0px);
+}
+.jumbotron.in-view, article.in-view{
+	@include transition(opacity ease .5s);
+	@include translate3d(0px, 0px, 0px);
+
+}
+.jumbotron.bounce-up.in-view, article.bounce-up.in-view{
+	@include animation(fadein 2s);
+
+}
+/* Buttons
+-------------------------------------------------- */
+.button-transparent{
+	@include button-variant(transparent, transparent, $active-background: darken(transparent, 0%), $active-border: darken(transparent, 0%))
+	@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, 0rem);
+	box-sizing: border-box;
+	font-family:$font-family-brand-light;
+	text-transform:uppercase;
+	font-size:0.8rem;
+	letter-spacing:1px;
+	&:focus,
+  	&.focus{
+  		box-shadow: none !important;
+  	}
+}
+.button-transparent-dark{
+	@include button-variant(transparent, transparent, $active-background: darken(transparent, 0%), $active-border: darken(transparent, 0%))
+	@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, 0rem);
+	box-sizing: border-box;
+	font-family:$font-family-brand;
+	text-transform:uppercase;
+	font-size:0.8rem;
+	letter-spacing:1px;
+	color: $brand-dark;
+	&:hover{
+		color: $industrial;
+	}
+	&:focus,
+  	&.focus{
+  		box-shadow: none !important;
+  		color: $brand-dark !important;
+  	}
+  	&.active{
+  		color:$industrial !important;
+  	}
+}
+
+.button-brand-i{
+	@include button-variant(transparent, $industrial, $active-background: darken($industrial, 50%), $active-border: darken($industrial, 50%))
+	@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, 1rem);
+	box-sizing: border-box;
+	//font-family:$font-family-brand;
+	//text-transform:uppercase;
+	font-size:1rem;
+	//letter-spacing:1px;
+	color: $industrial;
+	border-radius:4px;
+	@include transition(all 0.3s ease-in-out);
+	&:hover{
+		color: white;
+		background-color:$industrial;
+		//border-width:2px;
+		//border-color:$industrial
+	}
+	&:focus,
+  	&.focus{
+  		box-shadow: none !important;
+  		color: $industrial !important;
+  	}
+  	&.active{
+  		color:$industrial !important;
+  	}
+}
+/* Forms
+-------------------------------------------------- */
+.input-transparent{
+	background-color: transparent;
+	@include border-radius(0);
+	border:0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	@include border-opacity(white, 50);
+	@include placeholder-color($semi-transparent);
+	color:white;
+}
+.input-transparent-dark{
+	background-color: transparent;
+	@include border-radius(0);
+	border:0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	@include border-opacity(black, 50);
+	@include placeholder-color($semi-transparent-dark);
+	color:white;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  	position: relative;
+  	min-height: 100%;
+}
+body {
+  	/* Margin bottom by footer height */
+  	margin-bottom: 60px;
+}
+main{
+	overflow:hidden;
+}
+
+
+/* jumbotron
+-------------------------------------------------- */
+#jumbotron-img{
+	.jumbotron{
+		padding:0;
+		position:relative;
+		@extend .mask-img;
+		.jumbotron-img{
+			width:100%;
+		}
+		.jumbotron-body{
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:2;
+			.logo{
+				//margin-top:-4rem;
+				margin-bottom:2rem;
+				padding:0 3.5rem;
+			}
+			h1{
+				font-family:$font-family-brand-bold;
+				font-size:5rem;
+				line-height:1.1;
+				text-transform:uppercase;
+				color:white;
+				padding-left:3rem;
+			}
+			.temas{
+				font-family:$font-family-serif;
+				font-style:italic;
+				font-size:0.9rem;
+				color:white;
+				a{
+					@extend .bt-line-l;
+				}
+			}
+			.ficha{
+				padding-left:3rem;
+				>.col, .col-auto{
+					font-family:$font-family-brand-light;
+					border-color:white;
+					padding:0.6rem 1rem;	
+					color:white;
+					font-size:0.9rem;
+				}
+			}
+		}
+	}
+}
+.industrial{
+	background-color:$industrial;
+}
+.dcomunicacion{
+	background-color:$dcomunicacion;
+	.jumbotron{
+		background:url('../assets/bg-comunicacion.jpg') no-repeat;
+	}
+}
+
+/* Repositorio programas
+-------------------------------------------------- */
+
+.album{
+	@extend .full-bg;	
+	.row{
+		.search-title{
+			font-family:$font-family-brand-bold;
+			font-size:2rem;
+			color:$brand-dark;
+			text-transform:uppercase;
+			margin-bottom:0;
+		}
+		.search-desc{
+			font-family:$font-family-brand-light;
+			font-size:0.9rem;
+		}
+		.col-md-4{
+			@extend .grid-items;
+		}
+	}
+}
+.pagination{
+	padding-left:15px;
+	.page-item{
+		.page-link{
+			@include border-radius(0);
+			color:$gray-500;
+			border-color:$gray-500;
+			background:transparent;
+			font-family:$font-family-brand-light;
+			@include transition(all 0.3s ease-in-out);
+			&:hover, &.active{
+				color:$industrial;
+			}
+		}
+	}
+}
+
+/*-------------------------------------------------- 
+ Detalle Programa
+-------------------------------------------------- */
+.isotope-nav{
+	@extend .navi;
+	li a {
+		color:$brand-light;
+	}
+}
+
+/*-------------------------------------------------- 
+ Detalle Programa
+-------------------------------------------------- */
+
+/* Tabs
+-------------------------------------------------- */
+
+.tabs-asignaturas{
+	z-index:50;
+	position:relative;
+	margin-top:-1rem;
+	//padding-left:3rem;
+	.nav{
+		&.nav-tabs{
+			.nav-item{
+				a.nav-link{
+					@include border-radius(0);
+					background:none;
+					color:$brand-dark;
+					font-family:$font-family-brand-light;
+					text-transform:uppercase;
+					font-size:0.9rem;
+					letter-spacing:1px;
+					margin-right:0.3rem;
+					order-bottom: 2px solid white;
+					//border-width:0;
+					&.active{
+						color:$industrial;
+						border-bottom: 2px solid $industrial !important;
+						border:none;
+					}
+					&:hover{
+						border-bottom: 2px solid $industrial !important;
+						border:none;
+					}
+				}
+			}
+
+		}
+	}
+	.tab-content{	
+		@extend .body;
+		.col-md-6{
+			@extend .grid-items;
+		}
+		.col-destacada{
+			@extend .rollover;
+			.col-md{
+				overflow:hidden;
+				z-index:50;
+				&:last-child{
+					background:$brand-dark;
+					color:white;
+					a{
+						color:white;
+					}
+					.card-body{
+						.category-col{
+							a{
+								margin-left:1.5rem;
+								@extend .bt-line-xs;
+								color:$industrial !important;
+							}
+						}
+						.card-title{
+							padding:0.5rem 1.5rem 0rem;
+							font-family:$font-family-brand-bold;
+							font-size:3rem;
+							color:white;
+							line-height:1.1;
+							text-transform:uppercase;
+							word-break: break-all;
+							opacity:1;							
+							@include transition(all 0.3s ease-in-out);	
+						}
+						.by{
+							padding-left:1.5rem;
+							margin-bottom:5px;
+						}
+						.list-student{
+							padding-left:1.5rem;
+							font-family:$font-family-brand-light;
+							font-size:0.9rem;
+							margin-bottom:2rem;
+							margin-top:-0.5rem;
+						}
+						p{
+							padding-left:1.5rem;
+							font-weight:300;
+							font-size:0.8rem;
+							+ a{
+								@extend .bt-line-l;
+								margin-left:1.5rem;
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+}
+/*-------------------------------------------------- 
+ Detalle Producto
+-------------------------------------------------- */
+article{
+	@extend .body;
+}
+/*-------------------------------------------------- 
+ Detalle Docente
+-------------------------------------------------- */
+#docente-img{
+	padding:3rem 0;
+	.breadcrumb{
+		padding-left:1rem;
+		margin-top:0rem;
+		margin-bottom:0;
+		.breadcrumb-item{
+			a{
+				color: #190927;
+    			border-color: #190927;
+    			&:hover{
+    				border-radius: 3px;
+    			}
+			}
+		}
+	}
+	.card-title{
+		padding:0.5rem 3rem 0 0 ;
+		font-family:$font-family-brand-bold;
+		font-size:3rem;
+		color: $brand-dark;
+		line-height:1.1;
+		text-transform:uppercase;
+		opacity:1;							
+		@include transition(all 0.3s ease-in-out);	
+	}
+	.category-col{
+		a:hover{
+		    border-radius: 3px;
+		    border-style: solid;
+		    border-width: 2px;
+		    color: #190927;
+    		border-color: #190927;
+		}
+	}
+}
+
+

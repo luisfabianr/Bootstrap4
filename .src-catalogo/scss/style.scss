@@ -1,0 +1,177 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "mixins";
+
+
+/* Tipografia Futura
+-------------------------------------------------- */
+@at-root {
+  // Import the fonts
+  @font-face{
+    font-family:'Grotesque-Bold';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot'), '#{$icon-font-path}#{$body-font-name-bold}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff2'), '#{$icon-font-path}#{$body-font-name-bold}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff'), '#{$icon-font-path}#{$body-font-name-bold}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.ttf'), '#{$icon-font-path}#{$body-font-name-bold}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}'), '#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}')) format('svg');
+  }
+    @font-face{
+    font-family:'Grotesque-Medium';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff2'), '#{$icon-font-path}#{$body-font-name-medium}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff'), '#{$icon-font-path}#{$body-font-name-medium}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.ttf'), '#{$icon-font-path}#{$body-font-name-medium}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}'), '#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}')) format('svg');
+  }
+    @font-face{
+    font-family:'Grotesque-Light';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff2'), '#{$icon-font-path}#{$body-font-name-light}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff'), '#{$icon-font-path}#{$body-font-name-light}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.ttf'), '#{$icon-font-path}#{$body-font-name-light}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}'), '#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}')) format('svg');
+  }
+}
+
+/* Global styles
+-------------------------------------------------- */
+
+.bg-blue{
+	background:$color-brand-blue;
+}
+.sombra{
+	box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.25);
+}
+/* Custom styles
+-------------------------------------------------- */
+.jumbotron{
+	position:relative;
+	padding: $jumbotron-padding / 1(0);
+	padding-bottom:0;
+	margin-bottom:0;
+	&::before{
+		content:'';
+		background:url('../assets/img/strip-patterns.svg')no-repeat center center;
+		@include size(100%);
+		position:absolute;
+		z-index:0;
+		left:0;
+		top:0;
+	}
+	&::after{
+	    content: "\00a0";
+	    display: block;
+	    @include size(100%);
+	    position: absolute;
+	    bottom: 0%;
+	    left: 0%;
+	    -webkit-transform: translateY(50%);
+	    transform: translateY(50%);
+	    background: radial-gradient(ellipse farthest-corner at center center,rgba(255,255,255,.35) 0,rgba(255,255,255,0) 70%);
+	}
+	.body-jumbotron{
+		position:relative;
+		.jumbotron-heading{
+			color:white;
+			font-family:$font-family-brand-medium;
+			font-size:4rem;
+		}
+		.lead-jumbotron{
+			color:white;
+			font-family:$font-family-brand-light;
+			font-size:2.063rem;
+			line-height:1;
+			padding:1rem 11rem;
+			span{
+				font-family:$font-family-brand-medium;
+			}
+			.subline{
+				font-family:$font-family-brand-light;
+				border-bottom:1px solid white;
+			}
+		}
+		.catalogo-print{
+			position:relative;
+			z-index:1;
+			img{
+
+				@extend .sombra;
+
+			}
+		}
+		
+	}
+	
+}
+main{
+	position:relative;
+	margin-top:-120px;
+	padding: $jumbotron-padding * 4(1rem) 2rem;
+	background:white;
+	.container{
+		ul{
+			display:inline-block;
+			margin-left:-30px;
+			li{
+				list-style:none;
+				position:relative;
+				&::before{
+					content:'';
+					background: url('../assets/img/dot.svg') no-repeat;
+					@include size(19px);
+					display:inline-block;
+					left:0;
+					top:6px;
+					margin-right:5px;
+					
+
+				}
+			}
+		}
+		
+	}
+
+}
+footer{
+	padding: $jumbotron-padding;
+	position:relative;
+	z-index:5;
+	.container{
+		h3{
+			font-size:1.125rem;
+			text-transform:uppercase;
+			font-family:$font-family-brand-medium;
+			color:$color-brand-black;
+		}
+		p{
+			font-family:$font-family-brand-light;
+			font-size:1rem;
+		}
+		a{
+			font-family:$font-family-sans-serif;
+			display:block;
+			font-size:0.85rem;
+			color:$color-brand-blue;
+		}
+		
+	}
+}
+.modal{
+	.modal-content{
+		@extend .sombra;
+		padding-bottom:2rem;
+		h3{
+			font-family:$font-family-brand-light;
+			color:$color-brand-blue;
+			line-height:1.1;
+			padding-right:2rem;
+		}
+		p{
+			font-family:$font-family-brand-light;
+			color:$color-brand-black;
+			font-size:1.1rem;
+			padding-right:2rem;
+		}
+	}
+
+}

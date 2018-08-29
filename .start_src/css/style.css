@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+.animated {
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+/* Tipografia Futura
+-------------------------------------------------- */
+@font-face {
+  font-family: 'Grotesque-Bold';
+  src: url("fonts/Grotesque/Grotesque-Bold.eot");
+  src: url("fonts/Grotesque/Grotesque-Bold.eot?#iefix") format("embedded-opentype"), url("fonts/Grotesque/Grotesque-Bold.woff2") format("woff2"), url("fonts/Grotesque/Grotesque-Bold.woff") format("woff"), url("fonts/Grotesque/Grotesque-Bold.ttf") format("truetype"), url("fonts/Grotesque/Grotesque-Bold.svg#Grotesque-Bold") format("svg"); }
+
+@font-face {
+  font-family: 'Grotesque-Medium';
+  src: url("fonts/Grotesque/Grotesque-Medium.woff2") format("woff2"), url("fonts/Grotesque/Grotesque-Medium.woff") format("woff"), url("fonts/Grotesque/Grotesque-Medium.ttf") format("truetype"), url("fonts/Grotesque/Grotesque-Medium.svg#Grotesque-Medium") format("svg"); }
+
+@font-face {
+  font-family: 'Grotesque-Light';
+  src: url("fonts/Grotesque/Grotesque-Light.woff2") format("woff2"), url("fonts/Grotesque/Grotesque-Light.woff") format("woff"), url("fonts/Grotesque/Grotesque-Light.ttf") format("truetype"), url("fonts/Grotesque/Grotesque-Light.svg#Grotesque-Light") format("svg"); }
+
+/* Global styles
+-------------------------------------------------- */
+.bg-blue {
+  background: #005EB8; }
+
+/*# sourceMappingURL=style.css.map */

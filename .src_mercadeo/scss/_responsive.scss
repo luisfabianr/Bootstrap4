@@ -1,0 +1,30 @@
+
+@include media-breakpoint-up(md) { 
+	.agenda{
+		overflow-y: auto;
+	}
+	.vh-100 {
+	   height:  calc(100vh - 9rem);
+	}
+	.col-sidebar {
+	    position: -webkit-sticky;
+	    position: sticky;
+	    top: 3.6rem;
+	    z-index: 1000;
+	    height: calc(100vh - 4rem);
+	}
+	.card-columns {
+	    column-count: 2 !important;
+	    column-gap: 1.25rem;
+	    orphans: 1;
+	    widows: 1;
+	}
+}
+@include media-breakpoint-down(md) { 
+	.container .card-columns {
+	    column-count: 1 !important;
+	}
+}
+@include media-breakpoint-down(sm) { 
+
+}
