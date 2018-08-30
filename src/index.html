@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
 		<link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/owl.carousel.min.css" />
+		<link rel="stylesheet" href="/css/owl.theme.default.min.css" />
 		<link rel="stylesheet" href="/css/style.css">
 	</head>
 	<body>
@@ -127,6 +129,41 @@
 					</div>
 				</section>
 			</div>
+
+			<section class="latest-blog-posts bg-white pt-5 pb-5">
+				<div class="container">
+					<div id="owl-demo-2" class="owl-carousel owl-theme">
+						<article class="thumbnail item" itemscope="" itemtype="http://schema.org/CreativeWork">
+							<div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1531616918159-0c11198cd033')">
+							</div>
+						</article>
+
+						<article class="thumbnail item" itemscope="" itemtype="http://schema.org/CreativeWork">
+								<img src="http://placehold.it/500x250" class="img-responsive" />
+						</article>
+						
+						<article class="thumbnail item" itemscope="" itemtype="http://schema.org/CreativeWork">
+								<img src="http://placehold.it/500x250" class="img-responsive" />
+						</article>
+						
+						<article class="thumbnail item" itemscope="" itemtype="http://schema.org/CreativeWork">
+								<img src="http://placehold.it/500x250" class="img-responsive" />
+						</article>
+						
+						<article class="thumbnail item" itemscope="" itemtype="http://schema.org/CreativeWork">
+								<img src="http://placehold.it/500x250" class="img-responsive" />
+						</article>
+						
+						<article class="thumbnail item" itemscope="" itemtype="http://schema.org/CreativeWork">
+								<img src="http://placehold.it/500x250" class="img-responsive" />
+						</article>
+					</div><!-- #owl-demo-2 -->	
+					<div class="customNavigation">
+							<span class="pager-left"><a class="btn btn-link prev"><span class="glyphicon glyphicon-chevron-left"></span></a></span>
+							<span class="pager-right"><a class="btn btn-link next"><span class="glyphicon glyphicon-chevron-right"></span></a></span>
+						</div>	
+				</div><!-- .container -->
+			</section>
 		</main>
 		<footer class="container">
       		<div class="row ">
@@ -154,5 +191,26 @@
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/tether.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/owl.carousel.min.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+
+				var owl = $("#owl-demo-2");
+			  	owl.owlCarousel({
+			  		
+			  		nav : true,
+			      	items : 1, 
+			      	itemsDesktop : [992,3],
+			      	itemsDesktopSmall : [768,2], 
+			      	itemsTablet: [480,2], 
+			      	itemsMobile : [320,1]
+			  	});
+  				$(".next").click(function(){ owl.trigger('owl.next'); });
+  				$(".prev").click(function(){ owl.trigger('owl.prev'); });
+
+				$('.latest-blog-posts .thumbnail.item').matchHeight();
+	
+			});
+		</script>
 	</body>
 </html>
