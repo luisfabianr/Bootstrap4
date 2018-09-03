@@ -19,10 +19,10 @@
 		<header>
 			<div class="navbar navbar-default fixed-top navbar-fixed-top navbar-light">
 				<div class="container d-flex align-items-start">
-					<a class="navbar-brand d-flex align-items-center" href="index.html">
+					<!--<a class="navbar-brand d-flex align-items-center" href="index.html">
               			<img class="logo_light" src="/assets/logo-corona.svg" alt="Corona"/>
               			<img class="logo_dark" src="/assets/logo-corona-min.svg" alt="Corona"/>
-            		</a>
+            		</a>-->
             		<!-- /navbar-brand -->
             		
 					<div class="dropdown dropdown-menu-right dropdown-cat">
@@ -74,7 +74,6 @@
 				</div>
 			</section>
 			<!-- /.carrousel -->
-
 			<section class="mansonay">
 				<div class="container">	
 					<div class="pn-ProductNav_Wrapper mb-3 mt-mb-4">
@@ -247,7 +246,11 @@
 		</main>
 		<!-- /main -->
 
-		<footer class="mt-2">
+		<div id="sticky-anchor"></div>
+		<div id="sticky"><a href="repositorio-producto.html" class="">Conoce <span>aquí</span> nuestra <span>nueva</span> colección </a> <div class="btn btn-outline-light d-inline "><a href="repositorio-producto.html">Ver productos</a></div></div>
+		<!-- /sticky -->
+	
+		<footer id="footer" class="mt-2">
 			<div class="container">
 	      		<div class="row ">
 	      			<div class="col-6">
@@ -283,8 +286,29 @@
 			      	itemsTablet: [480,2], 
 			      	itemsMobile : [320,1]
 			  	});
-	
 			});
+		  	function sticky_relocate() {
+			    var window_top = $(window).scrollTop();
+			    var footer_top = $("#footer").offset().top;
+			    var div_top = $('#sticky-anchor').offset().top;
+			    var div_height = $("#sticky").height();
+
+			    var scrollHeight = $(document).height();
+				var scrollPosition = $(window).height() + $(window).scrollTop();
+			    
+			    if ((scrollHeight - scrollPosition) / scrollHeight === 0)
+			        $('#sticky').removeClass('stick');    
+			    else if (window_top) {
+			        $('#sticky').addClass('stick');
+			    } else {
+			        $('#sticky').removeClass('stick');
+			    }
+			}
+			$(function () {
+			    $(window).scroll(sticky_relocate);
+			    sticky_relocate();
+			});
+
 		</script>
 	</body>
 </html>

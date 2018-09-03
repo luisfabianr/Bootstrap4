@@ -169,7 +169,11 @@
 		</main>
 		<!-- /main -->
 
-		<footer class="mt-2">
+		<div id="sticky-anchor"></div>
+		<div id="sticky"><a href="repositorio-producto.html" class="">Conoce <span>aquí</span> nuestra <span>nueva</span> colección</a></div>
+		<!-- /sticky -->
+
+		<footer class="mt-2"  id="footer">
 			<div class="container">
 	      		<div class="row ">
 	      			<div class="col-6">
@@ -205,8 +209,29 @@
 			      	itemsTablet: [480,2], 
 			      	itemsMobile : [320,1]
 			  	});
-	
 			});
+		  	function sticky_relocate() {
+			    var window_top = $(window).scrollTop();
+			    var footer_top = $("#footer").offset().top;
+			    var div_top = $('#sticky-anchor').offset().top;
+			    var div_height = $("#sticky").height();
+
+			    var scrollHeight = $(document).height();
+				var scrollPosition = $(window).height() + $(window).scrollTop();
+			    
+			    if ((scrollHeight - scrollPosition) / scrollHeight === 0)
+			        $('#sticky').removeClass('stick');    
+			    else if (window_top) {
+			        $('#sticky').addClass('stick');
+			    } else {
+			        $('#sticky').removeClass('stick');
+			    }
+			}
+			$(function () {
+			    $(window).scroll(sticky_relocate);
+			    sticky_relocate();
+			});
+
 		</script>
 	</body>
 </html>

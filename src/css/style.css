@@ -688,6 +688,57 @@ header .dropdown-cat button {
   height: 60px;
   width: 100%; }
 
+#sticky {
+  padding: 0.5ex;
+  width: 100%;
+  height: 50px;
+  background-color: #0069B4;
+  color: #fff;
+  font-size: 2em;
+  float: left;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+  #sticky.stick {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    opacity: 1;
+    text-align: center;
+    line-height: 1;
+    text-transform: uppercase;
+    opacity: 0.9; }
+    #sticky.stick a {
+      display: inline-block;
+      padding-top: 10px;
+      font-family: "Brandon_Grotesque_Light";
+      text-decoration: none;
+      letter-spacing: 2px;
+      color: white;
+      font-size: 0.525em; }
+      #sticky.stick a span {
+        font-family: "brandon_grotesquemedium"; }
+      @media (max-width: 575.98px) {
+        #sticky.stick a {
+          font-size: 0.425em;
+          letter-spacing: 1px; } }
+    #sticky.stick:hover {
+      background: #00A4E6;
+      opacity: 1; }
+    #sticky.stick > div {
+      font-size: 0.5em;
+      position: relative;
+      font-family: "Brandon_Grotesque_Light";
+      letter-spacing: 2px;
+      padding: 0px 10px 3px; }
+      #sticky.stick > div.a:hover {
+        font-family: "brandon_textregular";
+        color: #0069B4; }
+
 footer {
   background: #0069B4;
   padding: 30px 0; }
