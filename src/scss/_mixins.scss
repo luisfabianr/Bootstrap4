@@ -4,27 +4,106 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 $font-family-serif:			  "PT Serif", serif;	
 $bootstrap-sass-asset-helper: false;
-$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "fonts/Grotesque/");
+$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "fonts/");
 
 //** File name for all font files.
-$body-font-name-medium:     "Grotesque-Medium";
-$body-font-svg-id-medium:   "Grotesque-Medium";
-$body-font-name-light:       "Grotesque-Light";
-$body-font-svg-id-light:     "Grotesque-Light";
-$body-font-name-bold:      	 "Grotesque-Bold";
-$body-font-svg-id-bold:   	 "Grotesque-Bold";
 
-$font-family-brand-bold:	 "Grotesque-Bold";
-$font-family-brand-light:	 "Grotesque-Light";
-$font-family-brand-medium: "Grotesque-Medium";
+$body-font-name-regular:     "hvd_fonts_-_brandontext-regular-webfont";
+$body-font-svg-id-regular:   "hvd_fonts_-_brandontext-regular-webfont";
+$body-font-name-medium:      "brandon-grotesque-medium-587bd623e472a-webfont";
+$body-font-svg-id-medium:    "brandon-grotesque-medium-587bd623e472a-webfont";
+$body-font-name-light:       "BrandonGrotesque-Light";
+$body-font-svg-id-light:     "BrandonGrotesque-Light";
+$body-font-name-bold:      	 "brandon-grotesque-bold-587bd6400afd0-webfont";
+$body-font-svg-id-bold:   	 "brandon-grotesque-bold-587bd6400afd0-webfont";
+$body-font-name-thin:        "brandon-grotesque-thin-587bd5b76cfba-webfont";
+$body-font-svg-id-thin:      "brandon-grotesque-thin-587bd5b76cfba-webfont";
+$body-font-name-black:       "brandon-grotesque-black-58a8a3e824392-webfont";
+$body-font-svg-id-black:     "brandon-grotesque-black-58a8a3e824392-webfont";
+$body-font-name-regularRg:   "brandon_reg-webfont";
+$body-font-svg-id-regularRg: "brandon_reg-webfont";
 
-$color-brand-blue:          #005EB8;
-$color-brand-blue-light:    #41B6E6;
-$color-brand-blue-dark:     #003865;
+$font-family-brand-regular:  "brandon_textregular";
+$font-family-brand-medium:   "brandon_grotesquemedium";
+$font-family-brand-light:    "Brandon_Grotesque_Light";
+$font-family-brand-bold:     "brandon_grotesquebold";
+$font-family-brand-thin:     "brandon_grotesquethin";
+$font-family-brand-black:    "brandon_grotesqueblack";
+$font-family-brand-regularRg:"brandon_grotesque_regularRg";
+
+$color-brand-blue:          #2C5895;
+$color-brand-corona:        #0069B4;
+$color-brand-blue-light:    #00A4E6;
+$color-brand-blue-dark:     #2C5895;
 $color-brand-yellow:        #FFC72C;
-$color-brand-grey:          #D8D1CA;
+$color-brand-grey:          #979797;
 $color-brand-fucsia:        #E10F54;
 $color-brand-morado:        #8A1B61;
+$color-brand-grey-dark:     #504F52;
+
+
+// =============================================================================
+// Tipografia Brandon
+// =============================================================================
+@at-root {
+  // Import the fonts
+  @font-face{
+    font-family:'brandon_textregular';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.eot'), '#{$icon-font-path}#{$body-font-name-regular}.eot'));
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-regular}.eot?#iefix')) format('embedded-opentype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.woff2'), '#{$icon-font-path}#{$body-font-name-regular}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.woff'), '#{$icon-font-path}#{$body-font-name-regular}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.ttf'), '#{$icon-font-path}#{$body-font-name-regular}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regular}.svg##{$body-font-svg-id-regular}'), '#{$icon-font-path}#{$body-font-name-regular}.svg##{$body-font-svg-id-regular}')) format('svg');
+  }
+    @font-face{
+    font-family:'brandon_grotesquemedium';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff2'), '#{$icon-font-path}#{$body-font-name-medium}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff'), '#{$icon-font-path}#{$body-font-name-medium}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.ttf'), '#{$icon-font-path}#{$body-font-name-medium}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}'), '#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}')) format('svg');
+  }
+    @font-face{
+    font-family:'brandon_grotesquebold';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff2'), '#{$icon-font-path}#{$body-font-name-bold}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff'), '#{$icon-font-path}#{$body-font-name-bold}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.ttf'), '#{$icon-font-path}#{$body-font-name-bold}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}'), '#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}')) format('svg');
+  }
+  @font-face{
+    font-family:'brandon_grotesquethin';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-thin}.woff2'), '#{$icon-font-path}#{$body-font-name-thin}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-thin}.woff'), '#{$icon-font-path}#{$body-font-name-thin}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-thin}.ttf'), '#{$icon-font-path}#{$body-font-name-thin}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-thin}.svg##{$body-font-svg-id-thin}'), '#{$icon-font-path}#{$body-font-name-thin}.svg##{$body-font-svg-id-thin}')) format('svg');
+  }
+  @font-face{
+    font-family:'brandon_grotesque_regularRg';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regularRg}.woff2'), '#{$icon-font-path}#{$body-font-name-regularRg}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regularRg}.woff'), '#{$icon-font-path}#{$body-font-name-regularRg}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regularRg}.ttf'), '#{$icon-font-path}#{$body-font-name-regularRg}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-regularRg}.svg##{$body-font-svg-id-regularRg}'), '#{$icon-font-path}#{$body-font-name-regularRg}.svg##{$body-font-svg-id-regularRg}')) format('svg');
+  }
+  @font-face{
+    font-family:'brandon_grotesqueblack';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-black}.woff2'), '#{$icon-font-path}#{$body-font-name-black}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-black}.woff'), '#{$icon-font-path}#{$body-font-name-black}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-black}.ttf'), '#{$icon-font-path}#{$body-font-name-black}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-black}.svg##{$body-font-svg-id-black}'), '#{$icon-font-path}#{$body-font-name-black}.svg##{$body-font-svg-id-black}')) format('svg');
+  }
+  @font-face{
+    font-family:'Brandon_Grotesque_Light';
+    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff2'), '#{$icon-font-path}#{$body-font-name-light}.woff2')) format('woff2'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff'), '#{$icon-font-path}#{$body-font-name-light}.woff')) format('woff'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.ttf'), '#{$icon-font-path}#{$body-font-name-light}.ttf')) format('truetype'),
+         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}'), '#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}')) format('svg');
+  }
+}
+
+
+
+
+
 
 
 // =============================================================================

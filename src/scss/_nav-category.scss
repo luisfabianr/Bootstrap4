@@ -1,0 +1,209 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "mixins";
+
+.pn-ProductNav_Wrapper {
+	position: relative;
+	//padding: 0 11px;
+}
+
+.pn-ProductNav {
+    /* Make this scrollable when needed */
+    overflow-x: auto;
+    /* We don't want vertical scrolling */
+    overflow-y: hidden;
+    /* For WebKit implementations, provide inertia scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* We don't want internal inline elements to wrap */
+    white-space: nowrap;
+    /* If JS present, let's hide the default scrollbar */
+    .js & {
+        /* Make an auto-hiding scroller for the 3 people using a IE */
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        /* Remove the default scrollbar for WebKit implementations */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+	/* positioning context for advancers */
+	position: relative;
+}
+
+@media (min-width: 991.98px) { 
+	.front-page .pn-ProductNav_Wrapper{
+		z-index:15;
+		margin-top:-3.5rem;
+		
+	}
+	.front-page .pn-ProductNav{
+		display:flex;
+		justify-content:center;
+	}
+}
+@media (max-width: 991.97px) { 
+	button.btn{
+		background:white;
+	}
+}
+.pn-ProductNav_Contents {
+	float: left;
+	transition: transform .2s ease-in-out;
+	display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pn-ProductNav_Contents-no-transition {
+	transition: none;
+}
+
+.front-page .pn-ProductNav_Link {
+	border-style: solid;
+	border-width: 1px;
+	@include border-opacity($color-brand-grey, 40);
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2C5895;
+    font-size: 0.625rem;
+    font-family: "brandon_grotesquebold";
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    min-width: 90px;
+    text-align: center;
+    letter-spacing: 1.6px;
+    display: inline-flex;
+    text-transform:uppercase;
+    position:relative;
+    padding: 45px 11px 11px;
+    margin-left: 11px;
+    @include transition(all 0.3s);	
+    &::before{
+    	content: '';
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    background-image: url(/assets/icon-all-dark.svg);
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    top: -10px;
+    }
+    &:hover{
+		background:$color-brand-blue-dark;
+		color:white;
+		padding: 45px 11px 11px;
+		&:before{
+		    background-image: url(/assets/icon-all.svg) !important;
+	    }
+    }
+
+	& + & {
+		text-transform:uppercase;
+		text-decoration:none;
+		margin-left: 11px;
+		padding: 45px 11px 11px;
+		//border-left: 1px solid #eee;
+		text-align:center;
+	}
+	&[aria-selected="true"]{
+		color: white;
+		background:$color-brand-blue-light;
+		text-transform:uppercase;
+		padding: 45px 11px 11px;
+		text-decoration:none;
+		&:before{
+		    background-image: url(/assets/icon-all.svg) !important;
+	    }
+		
+	}
+	&[aria-selected="false"]{
+		padding: 45px 11px 11px;
+		text-decoration:none;
+	}
+
+}
+
+.page-template .pn-ProductNav_Link {
+	border-style: solid;
+	border-width: 1px;
+	@include border-opacity($color-brand-blue-dark, 40);
+    border-radius: 4px;
+    text-decoration: none;
+    color:$color-brand-blue-dark;
+    font-size: 0.625rem;
+    font-family: "brandon_grotesquebold";
+    align-items: center;
+    justify-content: center;
+    padding:1rem 2rem;
+    text-align: center;
+    letter-spacing: 1.6px;
+    display: inline-flex;
+    text-transform:uppercase;
+    position:relative;
+    text-decoration:none;
+    margin-right: 11px;
+    @include transition(all 0.3s);	
+    &:hover{
+		background:$color-brand-blue-dark;
+		color:white;
+    }
+
+	& + & {
+		text-transform:uppercase;
+		text-decoration:none;
+		margin-left: 11px;
+		//border-left: 1px solid #eee;
+		text-align:center;
+	}
+	&[aria-selected="true"]{
+		color: white;
+		background:$color-brand-blue-light;
+		text-transform:uppercase;
+		text-decoration:none;
+		
+	}
+}
+
+.pn-Advancer {
+	/* Reset the button */
+	appearance: none;
+	background: transparent;
+	padding: 0;
+	border: 0;
+	&:focus {
+		outline: 0;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	/* Now style it as needed */
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	/* Set the buttons invisible by default */
+	opacity: 0;
+	transition: opacity .3s;
+}
+
+.pn-Advancer_Left {
+	left: 0;
+	[data-overflowing="both"] ~ &,
+	[data-overflowing="left"] ~ & {
+		opacity: 1;
+	}
+}
+
+.pn-Advancer_Right {
+	right: 0;
+	[data-overflowing="both"]  ~ &,
+	[data-overflowing="right"] ~ & {
+		opacity: 1;
+	}
+}
+
+.pn-Advancer_Icon {
+	width: 20px;
+	height: 44px;
+	fill: #bbb;
+}

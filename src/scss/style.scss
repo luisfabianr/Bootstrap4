@@ -1,84 +1,570 @@
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
+@import "header";
+@import "nav-category";
 @import "mixins";
-
-
-/* Tipografia Futura
--------------------------------------------------- */
-@at-root {
-  // Import the fonts
-  @font-face{
-    font-family:'Grotesque-Bold';
-    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot'), '#{$icon-font-path}#{$body-font-name-bold}.eot'));
-    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix'), '#{$icon-font-path}#{$body-font-name-bold}.eot?#iefix')) format('embedded-opentype'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff2'), '#{$icon-font-path}#{$body-font-name-bold}.woff2')) format('woff2'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.woff'), '#{$icon-font-path}#{$body-font-name-bold}.woff')) format('woff'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.ttf'), '#{$icon-font-path}#{$body-font-name-bold}.ttf')) format('truetype'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}'), '#{$icon-font-path}#{$body-font-name-bold}.svg##{$body-font-svg-id-bold}')) format('svg');
-  }
-    @font-face{
-    font-family:'Grotesque-Medium';
-    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff2'), '#{$icon-font-path}#{$body-font-name-medium}.woff2')) format('woff2'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.woff'), '#{$icon-font-path}#{$body-font-name-medium}.woff')) format('woff'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.ttf'), '#{$icon-font-path}#{$body-font-name-medium}.ttf')) format('truetype'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}'), '#{$icon-font-path}#{$body-font-name-medium}.svg##{$body-font-svg-id-medium}')) format('svg');
-  }
-    @font-face{
-    font-family:'Grotesque-Light';
-    src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff2'), '#{$icon-font-path}#{$body-font-name-light}.woff2')) format('woff2'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.woff'), '#{$icon-font-path}#{$body-font-name-light}.woff')) format('woff'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.ttf'), '#{$icon-font-path}#{$body-font-name-light}.ttf')) format('truetype'),
-         url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}'), '#{$icon-font-path}#{$body-font-name-light}.svg##{$body-font-svg-id-light}')) format('svg');
-  }
-}
 
 /* Global styles
 -------------------------------------------------- */
+.navbar-brand{
+	@include transition(all 0.3s ease-in-out);	
+	&:hover{
+		transform: scale(1.05);
+  		transition-duration: 0.2s;
+	}
+}
+.zoom-img {
+  	//@include transition(all 0.3s ease-in-out);
+  	@extend .zoom-img-hover;
 
-.bg-blue{
-	background:$color-brand-blue;
+}
+.zoom-img-hover {
+  transform: scale(1.05);
+  transition-duration: 0.5s;
+}
+.cardhover{
+	position:absolute;
+	top:0;
+	lef:0;
+	opacity:0;
+	display:flex;
+	justify-content:center;
+	@include size(100%);
+	@include transition(all 0.3s ease-in-out);	
+	&::before{
+		content:'';
+		position:absolute;
+		@include size(100%);
+		background:black;
+		z-index:1;
+		opacity:.3;
+
+	}
+}
+.button-card{
+	border-style: solid;
+	border-width: 1px;
+	@include border-opacity($color-brand-grey, 40);
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2C5895;
+    font-size: 0.625rem;
+    font-family: "brandon_grotesquebold";
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    min-width: 90px;
+    text-align: center;
+    letter-spacing: 1.6px;
+    display: inline-flex;
+    text-transform:uppercase;
+    position:relative;
+    margin-right:0.35rem;
+    padding: 45px 11px 11px;
+    overflow:hidden;
+    @include transition(all 0.3s);	
+    &::before{
+    	content: '';
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    background-image: url(/assets/icon-all-dark.svg);
+	    background-repeat: no-repeat;
+	    background-position: center top;
+	    top: 10px;
+    }
+    &:hover{
+		background:$color-brand-blue-light;
+		color:white;
+		&:before{
+		    background-image: url(/assets/icon-all.svg) !important;
+	    }
+    }
+    & + & {
+		text-transform:uppercase;
+		text-decoration:none;
+		margin-left: 11px;
+		padding: 45px 11px 11px;
+		//border-left: 1px solid #eee;
+		text-align:center;
+	}
+	&:focus{
+		color: white;
+		background:$color-brand-blue-light;
+		text-transform:uppercase;
+		padding: 45px 11px 11px;
+		text-decoration:none;
+		&:before{
+		    background-image: url(/assets/icon-all.svg) !important;
+	    }
+	}
+}
+.button-card-column{
+	border-style: solid;
+	border-width: 1px;
+	border-color:white;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2C5895;
+    font-size: 0.625rem;
+    font-family: "brandon_grotesquebold";
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    min-width: 90px;
+    text-align: center;
+    letter-spacing: 1.6px;
+    display: inline-flex;
+    text-transform:uppercase;
+    position:relative;
+    margin-right:0.35rem;
+    padding: 45px 11px 11px;
+    overflow:hidden;
+    color:white;
+    background:transparent !important;
+    @include transition(all 0.3s);	
+    &::before{
+    	content: '';
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    background-image: url(/assets/icon-all.svg);
+	    background-repeat: no-repeat;
+	    background-position: center top;
+	    top: 10px;
+    }
+    &:hover{
+		background:$color-brand-blue-light !important ;
+		border-color:$color-brand-blue-light;
+		color:white;
+		&:before{
+		    background-image: url(/assets/icon-all.svg) !important;
+	    }
+    }
+    & + & {
+		text-transform:uppercase;
+		text-decoration:none;
+		margin-left: 11px;
+		padding: 45px 11px 11px;
+		//border-left: 1px solid #eee;
+		text-align:center;
+	}
+}
+.mt-md-10{
+	margin-top:8rem;
+	@include media-breakpoint-only(xs) {
+		margin-top:1rem;
+	}
+	@include media-breakpoint-only(md) {
+		margin-top:12rem;
+	}
+}
+.mt-mb-4{
+	@include media-breakpoint-down(md) { 
+		margin-top:1.5rem;
+	}
 }
 
-.carousel-item {
-  height: 70vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+/* Front page
+-------------------------------------------------- */
+header{
+	.dropdown-cat{
+		button{
+			padding:15px 20px;
+			font-family:$font-family-brand-bold;
+			text-transform:uppercase;
+			font-size:0.625rem;
+			letter-spacing:2px;
+			color:$color-brand-blue-dark;
+			background:white;
+		}
+	}
+}
+
+.carrousel{
+	position:relative;
+	.carousel-item {
+		height: 70vh;
+		min-height: 300px;
+		background: no-repeat center center scroll;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		@include media-breakpoint-only(xs) {
+			height: 100vh;
+		}
+		@include media-breakpoint-only(xs) {
+			video {
+	            display:none;
+	        }
+	        background-image: url('http://placehold.it/300x675');
+		}
+	}
+	.carousel-block-white {
+		position: absolute;
+		height:80px;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 15;
+		display: flex;
+		justify-content: center;
+		padding-left: 0; // override <ol> default
+		// Use the .carousel-control's width as margin so we don't overlay those
+		margin-right: $carousel-control-width;
+		margin-left: $carousel-control-width;
+		list-style: none;
+		background:white;
+	}
+	.owl-nav,.owl-dots{
+		position:absolute;
+		@include media-breakpoint-down(md) {
+			display:none;
+		}
+	}
+	#background {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -100;
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			transform: translateX(-50%) translateY(-50%);
+			//background: url(polina.jpg) no-repeat;
+			background-size: cover;
+	}
+	.owl-nav {
+		position: absolute;
+		bottom: 10%;
+		left: 0;
+		right:5%;
+		
+		.owl-prev,.owl-next {
+			position: absolute;
+			top:0;
+			bottom: 0;
+			display: inline-block;
+			zoom: 1;
+			margin: 0;
+			width: 50px;
+			height: 50px;
+			line-height: 45px;
+			text-align: center;
+			font-size: 1em;
+			border-radius: 30px;
+			color: #FFF;
+			background: #000;
+			opacity: .6;
+			border-radius: 50px;
+		}
+		.owl-prev { 
+			right: 3em; 
+		}
+		.owl-next { 
+			right: .5em; 
+		}
+	}
+}
+.mansonay{
+	.title-card-columns{
+		font-size:2rem;
+		font-family:$font-family-brand-regular;
+		color:$color-brand-blue;
+		line-height:1;
+		span{
+			font-family:$font-family-brand-bold;
+		}
+		@include media-breakpoint-only(xs) {
+			font-size:1.6rem;
+			span{
+				font-family:$font-family-brand-medium;
+			}
+		}
+	}
+	.card-columns {
+		@include media-breakpoint-only(xs) {
+			column-count: 2;
+		}
+		@include media-breakpoint-only(lg) {
+			column-count: 3;
+		}
+		@include media-breakpoint-only(xl) {
+			column-count: 3;
+		}
+		.card{	
+			overflow:hidden;
+		    position:relative;
+			-moz-column-break-inside: avoid;
+			-webkit-column-break-inside: avoid;
+		    column-break-inside: avoid;
+		    -webkit-transform: translateX(0);
+		    -moz-transform: translateX(0);
+		    transform: translateX(0);
+			&:hover{
+				.hover-card{
+					opacity:1;
+					@include transition(all 0.3s ease-in-out);
+
+				}
+				img{
+					@extend .zoom-img;
+				}
+			}
+			.hover-card{
+				@extend .cardhover;
+				@include media-breakpoint-down(md) { 
+					display:none;
+				}
+				.card-buttons-hover{
+					position:relative;
+					z-index:2;
+				}
+			}
+		}
+	}	
+}
+.mansonry-productos{
+	.title-card-columns{
+		font-size:2rem;
+		font-family:$font-family-brand-regular;
+		color:$color-brand-blue;
+		line-height:1;
+		span{
+			font-family:$font-family-brand-bold;
+		}
+		@include media-breakpoint-only(xs) {
+			font-size:1.6rem;
+			span{
+				font-family:$font-family-brand-medium;
+			}
+		}
+	}
+	.card-columns {
+		@include media-breakpoint-only(xs) {
+			column-count: 2;
+		}
+		@include media-breakpoint-only(lg) {
+			column-count: 3;
+		}
+		@include media-breakpoint-only(xl) {
+			column-count: 4;
+		}
+		.card{	
+			overflow:hidden;
+			&:hover{
+				.hover-card{
+					opacity:1;
+					@include transition(all 0.3s ease-in-out);
+
+				}
+				img{
+					@extend .zoom-img;
+				}
+			}
+			.hover-card{
+				@extend .cardhover;
+				@include media-breakpoint-down(md) { 
+					display:none;
+				}
+				.card-buttons-hover{
+					position:relative;
+					z-index:2;
+				}
+			}
+		}
+	}	
+}
+.info-bar {
+    /* just for demo */
+    background-color: #F8F8F8;
+    border-top: 1px solid #E7E7E7;
+    text-align:center;
+    padding:20px;
+   /* just for demo */ 
+  
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
+
+footer{
+	background:$color-brand-corona;
+	padding:30px 0;
+	.footer-terms{
+		font-family:$font-family-brand-light;
+		font-size:1rem;
+		color:white;
+		@include media-breakpoint-only(xs) {
+			padding:1rem;
+		}
+
+	}
 }
 
 
-.card-columns {
-  @include media-breakpoint-only(xs) {
-    column-count: 2;
-  }
-  @include media-breakpoint-only(lg) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 3;
-  }
+/* Detalle Ambiente/espacio
+-------------------------------------------------- */
+.page-template{
+	.navbar{
+		//position:relative;
+		&::before{
+			content:'';
+			position:absolute;
+			top:0;
+			left:0;
+			@include size(100%, 50%);
+			border-bottom:1px solid #f0f0f0;
+			background:white;
+			z-index:-1;
+		}
+		&.top-nav-collapse{
+			&::before{
+				border:none;
+			}
+		}
+		@include media-breakpoint-only(xs) {
+			&::before{
+				background:transparent;
+				border:none;
+			}
+		}
+	}
 }
+.jumbotron{
+	padding-bottom:1rem;
+	background:white;
+	@include media-breakpoint-only(xs){
+		padding:1rem;
+		> .container{
+			padding:0;
+		}
+	}
+	.block-productos{ 
+		background:white;
+		position:absolute;
+		right:-1rem;
+		top:10%;
+		@include media-breakpoint-only(xs) {
+			position:relative;
+			margin-top:1rem;
+			right:0;
+		}
+		.title-block-productos{
+			padding:1rem 1rem 1rem 0;
+			@include media-breakpoint-only(xs) {
+				padding-left:0;
+			}
+			h2{
+				font-family:$font-family-brand-regular;
+				font-size:1.25rem;
+				color:$color-brand-blue-dark;
+				text-transform:uppercase;
+				line-height:1;
+				span{
+					font-family:$font-family-brand-bold;
+					display:block;
+				}
+				
+			}
+		}
+		.item-producto{
+			margin-bottom:1rem;
+			@include transition(all 0.3s ease-in-out);
+			position:relative;
+			a {
+				img{
+					display:block;
+					position:relative;
+				}
+			}
+			.media-body{
+				position:relative;
+				h5{
+					font-family:$font-family-brand-bold;
+					font-size:0.75rem;
+					text-transform:uppercase;
+					padding-right:1rem;
+					a{
+						color:$color-brand-grey-dark;
+					}
+				}
+				.ref{
+					font-family:$font-family-brand-bold;
+					font-size:0.75rem;
+					color:$color-brand-corona;
+				}
+			}
+			&::before{
+				content:'';
+				@include size(100%);
+				top:0;
+				left:0;
+				background:#f4f4f4;
+				position:absolute;
+				opacity:0;
+				z-index:0;
+				@include transition(all 0.3s ease-in-out);
+			}
+			&:hover{
+				a img{
+					transform: scale(1.05);
+  					transition-duration: 0.5s;
+				}
+				&::before{
+					opacity:1;
+					transform: scale(1.2);
+  					transition-duration: 0.5s;
+				}
+			}
+		}
+	}
+	.col-md-12.ml-3.mr-3{
+		@include media-breakpoint-only(xs){
+			margin:0 !important;
+		}
+	}
+	.card-body.col-md-8.border-right{
+		@include media-breakpoint-only(xs){
+			border-right:0 !important;
+		}
+	}
+	.card-text{
+		font-family:$font-family-brand-regular;
+		font-size:0.9375rem;
+		color:$color-brand-grey-dark;
+		line-height:1.1;
+	}
+	.card-title-producto{
+		font-family:$font-family-brand-regular;
+		font-size:1.5rem !important;
+		color:$color-brand-corona;
+		display:inline-block;
+		padding-right:1rem;
+		span{
+			font-family:$font-family-brand-bold;
+		}
+	}
+	.card-text-producto{
+		font-family:$font-family-brand-light;
+		font-size:1.1rem;
+		color:$color-brand-grey-dark;
+		line-height:1.2;
+	}
+	.ref-producto{
+		font-family:$font-family-brand-regular;
+		font-size:1.3rem !important;
+		color:$color-brand-grey-dark;
+	}
 
-.carousel-block-white {
-  position: absolute;
-  height:80px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 15;
-  display: flex;
-  justify-content: center;
-  padding-left: 0; // override <ol> default
-  // Use the .carousel-control's width as margin so we don't overlay those
-  margin-right: $carousel-control-width;
-  margin-left: $carousel-control-width;
-  list-style: none;
-  background:white;
-}
+}	
+
 
 
 
